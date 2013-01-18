@@ -18,3 +18,9 @@
 *.exe
 *.out
 *.app
+
+# Vim swap files
+.*.sw*
+
+# Binary
+rowavedt
