@@ -43,21 +43,21 @@ int compare_dbl(const void * a, const void * b);
 void readToDoubleMatrix (const char * fname, int nRows, int nCols, double *X);
 int readToDoubleVector (const char * fname, int nRows, int col, double* X);
 int readToDoubleVectorDynamic(const char * fname, int startRows, int col,
-		double** X);
+    double** X);
 
 // wls.c
 int wls(double* X, int n, int k,
-		double* y, double* w,
-		double* XTX, double *sqw, double* sqwX, double* sqwy,
-		double* Xy);
+    double* y, double* w,
+    double* XTX, double *sqw, double* sqwX, double* sqwy,
+    double* Xy);
 int calcFitted(double* X, int n, int k,
-		double* y,
-		double* coef,
-		double* fitted);
+    double* y,
+    double* coef,
+    double* fitted);
 int calcResid(double* X, int n, int k,
-		double* y,
-		double* coef,
-		double* resid);
+    double* y,
+    double* coef,
+    double* resid);
 
 // dist.c
 double dnorm_log(double * x, int n, double location, double scale);
@@ -65,14 +65,14 @@ double dt_log(double * x, int n, double df, double location, double scale);
 
 // lmT.c
 int lmT(double * basisMat, int basisRows, int basisCols,
-		double * valueVec, int n,
-		double * timeVec,
-		double * priorVec,
-		double nu, int k,
-		int maxIter, double tol,
-		double * logPosterior,
-		double * logLikelihood,
-		double * coef,
-		double * tau);
+    double * valueVec, int n,
+    double * timeVec,
+    double * priorVec,
+    double nu, int k,
+    int maxIter, double tol,
+    double * logPosterior,
+    double * logLikelihood,
+    double * coef,
+    double * tau);
 
 #endif /* WAVELETLMT_H_ */
