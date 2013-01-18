@@ -12,6 +12,7 @@ CFLAGS := -O3 -Wall
 BUILDDIR := build
 SRCDIR := src
 TESTDIR := test
+INSTALLDIR := /usr/local/bin
 
 RM := rm -rf
 
@@ -21,6 +22,8 @@ C_SRCS := $(wildcard $(SRCDIR)/*.c)
 OBJS := $(C_SRCS:$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
 
 C_DEPS := $(C_SRCS:$(SRCDIR)/%.c=$(BUILDDIR)/%.d)
+
+BINARY := rowavedt
 
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c
@@ -50,9 +53,13 @@ all: rowavedt
 rowavedt: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc  -o"rowavedt" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o"$(BINARY)" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
+
+install: rowavedt
+	@echo "Installing to $(INSTALLDIR)"
+	cp $(BINARY) $(INSTALLDIR)
 
 # Basic test
 .PHONY : test
