@@ -23,19 +23,12 @@ kDefaults <- list(filter.family='DaubLeAsymm',
 
 kOptSpec <- matrix(c(
   'filter.family', 'f', 1, 'character',
-    'A filter family recognized by wavethresh. Defaults to DaubLeAsymm.',
   'filter.number', 'i', 1, 'integer',
-    'Smoothness of wavelet to use for basis.\nDefaults to 4.',
   'bc', 'b', 1, 'character',
-    'Boundary handling.\nDefaults to symmetric.',
   'B', 'B', 1, 'integer',
-    'Size of basis to construct. Must be a power of 2.\nDefaults to 2048.',
   'n', 'n', 1, 'integer',
-    'Number of columns of basis to output\n(starting from lowest frequencies). Defaults to B.',
   'sep', 's', 1, 'character',
-    'Separator for output. Defaults to " ".',
-  'help', 'h', 0, 'logical',
-    'Display this help message and exit.'),
+  'help', 'h', 0, 'logical')
   ncol=5, byrow=TRUE)
 
 kHelp <- '
