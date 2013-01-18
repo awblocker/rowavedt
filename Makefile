@@ -1,5 +1,4 @@
 
-
 # For ATLAS BLAS
 LIBS := -lf77blas -llapack -latlas -lm -lgsl -lgslcblas
 # For Intel MKL BLAS
@@ -12,6 +11,7 @@ CFLAGS := -O3 -Wall
 
 BUILDDIR := build
 SRCDIR := src
+TESTDIR := test
 
 RM := rm -rf
 
@@ -54,12 +54,20 @@ rowavedt: $(OBJS) $(USER_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
+# Basic test
+.PHONY : test
+test: rowavedt
+	mkdir -p test/
+	./rowavedt data/basis.dat 2048 128 \
+		data/y.dat `wc -l data/y.dat` \
+		> test/output.txt
+	./rowavedt data/basis.dat 2048 128 \
+		data/yMissing.dat `wc -l data/yMissing.dat` \
+		>> test/output.txt
+
 # Other Targets
+.PHONY : clean
 clean:
 	-$(RM) $(OBJS)$(C_DEPS)$(EXECUTABLES) rowavedt
 	-@echo ' '
 
-.PHONY: all clean dependents
-.SECONDARY:
-
--include makefile.targets
