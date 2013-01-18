@@ -20,14 +20,16 @@ const char * kHelpMessage = "\nUsage:\trowavedt [options] "
   "-t\tSet column number for times. Note: This is base 0.\n"
   "\tDefaults to 0.\n\n"
   "Outputs a single space-delimited line to stdout consisting of\n"
-  "5 + BASISCOLS entries:\n"
+  "7 + BASISCOLS entries:\n"
   " 1  - ID (defaults to DATAFILE)\n"
   " 2  - Number of non-missing observations read from DATAFILE\n"
-  " 3  - Degrees of freedom set for t distribution of residuals\n"
-  " 4  - 2 * difference of maximized log-likelihoods between full and\n"
+  " 3  - Number of components in full basis (BASISCOLS)\n"
+  " 4  - Number of components in smooth (low-resolution) partial basis\n"
+  " 5  - Degrees of freedom set for t distribution of residuals\n"
+  " 6  - 2 * difference of maximized log-likelihoods between full and\n"
   "      low-frequency models\n"
-  " 5  - Estimated scale for residual variance of full model\n"
-  " 6: - Maximum a posteriori estimates of coefficients for full model\n"
+  " 7  - Estimated scale for residual variance of full model\n"
+  " 8: - Maximum a posteriori estimates of coefficients for full model\n"
   "       (BASISCOLS coefficients in total).\n"
   "\n";
 
@@ -53,7 +55,7 @@ int main(int argc, char * argv[]) {
   while ( (c=getopt(argc, argv, "c:d:i:m:n:s:t:h")) != -1 ) {
     switch(c) {
       case 'h':
-        printf(kHelpMessage);
+        puts(kHelpMessage);
         return 0;
       case 'c':
         valueCol = atoi(optarg);
@@ -265,7 +267,7 @@ int main(int argc, char * argv[]) {
    */
 
   // Basic information
-  fprintf(stdout, "%s %d %g ", idString, nObs, nu);
+  fprintf(stdout, "%s %d %d %d %g ", idString, nObs, basisCols, kSmooth, nu);
 
   // Test statistics
   fprintf(stdout, "%g %g ", llr, lpr);
