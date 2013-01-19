@@ -35,7 +35,7 @@ kOptList <- list(
 kUsage <- '
 Usage: Rscript screen_time_series.R [options] INPUT DETECTIONS_PATH STATS_PATH'
 kEpilogue <- '
-Runs detection procedure described in Blocker and Protopapas (2012) on output
+Runs screening procedure described in Blocker and Protopapas (2012) on output
 from rowavedt. Outputs a list of detected time series to DETECTIONS_PATH and a
 set of detection statistics to STATS_PATH.
 
