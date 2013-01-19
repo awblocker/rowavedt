@@ -53,7 +53,32 @@ run `make test`. This will produce `test/output.txt`.
 Finally, to install the `rowavedt` binary to `INSTALLDIR`, run `make install`
 (as root, if necessary).
 
+The R scripts `mk_wavelet_basis.R`, `screen_time_series.R`, and
+`compute_features.R` can all be used directly from the `scripts/` directory via
+`Rscript`.
+
 Usage
 --------------------------------------------------------------------------------
 
+The workflow is: construct a basis matrix using `mk_wavelet_basis.R`, use this
+basis matrix to fit the semi-parametric model to the time series of interest
+using `rowavedt` (likely with using a customized wrapper script for your
+dataset), then screen for variation at interesting scales using
+`screen_time_series.R`.
+
+All scripts and files have help and usage information available with the `-h`
+command line option. A few key points:
+  * Inputs to `rowavedt` need to be space-delimited text. For the time series
+    files (`DATAFILE`), the default is to have observation times in the first
+    column and observed values in the second. These can be changed via the `-t`
+    and `-c` options, respectively.
+  * `rowavedt` and `mk_wavelet_basis.R` write their output to stdout, but
+    `screen_time_series.R` writes its output to two files specified as
+    arguments to accommodate a separate output for detection statistics.
+  * `compute_features.R` requires both the output from `rowavedt` and the basis
+    matrix as inputs. If you use the `--detections` option with this script, be
+    careful to sort both the detections file (as output by
+    `screen_time_series.R`) and the output from `rowavedt` by their ID column.
+    If you sort the output from `rowavedt` before sending it to
+    `screen_time_series.R`, the former will be automatic.
 
