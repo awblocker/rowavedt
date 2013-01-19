@@ -1,4 +1,8 @@
 
+# Entries to modify as needed
+
+INSTALLDIR := /usr/local/bin
+
 # For ATLAS BLAS
 LIBS := -lf77blas -llapack -latlas -lm -lgsl -lgslcblas
 # For Intel MKL BLAS
@@ -9,10 +13,12 @@ INCLUDES := -I/usr/include/gsl -I/usr/include
 
 CFLAGS := -O3 -Wall
 
+
+# Do not modify below this line
+
 BUILDDIR := build
 SRCDIR := src
 TESTDIR := test
-INSTALLDIR := /usr/local/bin
 
 RM := rm -rf
 
