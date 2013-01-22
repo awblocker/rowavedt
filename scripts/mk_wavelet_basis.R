@@ -21,7 +21,7 @@ kOptList <- list(
   make_option(c('--filter.number', '-i'), type='integer', default=4,
               help=paste('Smoothness of wavelet to use for basis.',
                          '\n\t\tDefaults to %default.', sep='')),
-  make_option(c('--boundary', '-b'), default='symmetric',
+  make_option(c('--boundary', '-b'), default='periodic',
               help=paste('Boundary handling setting.',
                          '\n\t\tDefaults to %default.', sep='')),
   make_option(c('--B', '-B'), type='integer', default=2048,
