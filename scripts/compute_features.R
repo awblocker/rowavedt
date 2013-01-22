@@ -28,8 +28,7 @@ kOptList <- list(
                          '\n\t\tDefaults to %default.', sep=''))
 )
 
-kUsage <- '
-Usage: Rscript compute_features.R [options] INPUT BASIS [> output.txt]'
+kUsage <- 'Rscript compute_features.R [options] INPUT BASIS [> output.txt]'
 kEpilogue <- '
 Constructs features defined in Blocker and Protopapas (2012) on output
 from rowavedt. These are engineered for the separation of distinct,

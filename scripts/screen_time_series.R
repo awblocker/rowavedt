@@ -25,15 +25,14 @@ kOptList <- list(
                          '\n\t\tDefaults to %default.', sep='')),
   make_option(c('--method', '-m'), default='BH',
               help=paste('Method to use for FDR-controlling detection.',
-                         '\nMust be in p.adjust.methods.',
+                         '\n\t\tMust be in p.adjust.methods.',
                          '\n\t\tDefaults to %default.', sep='')),
   make_option(c('--sep', '-s'), default=' ',
               help=paste('Separator for output.',
                          '\n\t\tDefaults to %default.', sep=''))
 )
 
-kUsage <- '
-Usage: Rscript screen_time_series.R [options] INPUT DETECTIONS_PATH STATS_PATH'
+kUsage <- 'Rscript screen_time_series.R [options] INPUT DETECTIONS_PATH STATS_PATH'
 kEpilogue <- '
 Runs screening procedure described in Blocker and Protopapas (2012) on output
 from rowavedt. Outputs a list of detected time series to DETECTIONS_PATH and a
