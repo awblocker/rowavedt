@@ -71,12 +71,18 @@ install: rowavedt
 .PHONY : test
 test: rowavedt
 	mkdir -p test/
-	./rowavedt data/basis.dat 2048 128 \
+	Rscript scripts/mk_wavelet_basis.R -c 128 > test/basis.dat
+	./rowavedt test/basis.dat 2048 128 \
 		data/y.dat `wc -l data/y.dat` \
 		> test/output.txt
-	./rowavedt data/basis.dat 2048 128 \
+	./rowavedt test/basis.dat 2048 128 \
 		data/yMissing.dat `wc -l data/yMissing.dat` \
 		>> test/output.txt
+	Rscript scripts/screen_time_series.R --alpha=0.0001 test/output.txt \
+		test/detections.txt test/detection_stats.txt
+	Rscript scripts/compute_features.R --detections=test/detections.txt \
+		test/output.txt test/basis.dat \
+		> test/features.txt
 
 # Other Targets
 .PHONY : clean
